@@ -1,13 +1,14 @@
 import React from "react";
 import { decrement, increment, incrementByAmount } from "./counterSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import "./couter.scss"
 
 export const Counter: React.FC = () => {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
 
   return (
-    <div>
+    <div className="counter">
       <div>
         <button
           aria-label="Increment value"

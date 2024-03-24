@@ -52,9 +52,11 @@ export const todoSlice = createSlice({
       }
     },
   },
+
+  // AJOUT DES ACTIONS QUI IMPACTENT L'API
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTasks.fulfilled, (state, action: PayloadAction<Task[]>) => {
+      .addCase(fetchTasks.fulfilled, (_, action: PayloadAction<Task[]>) => {
         return action.payload;
       })
       .addCase(updateTask.fulfilled, (state, action: PayloadAction<Task>) => {

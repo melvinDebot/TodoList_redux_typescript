@@ -45,3 +45,10 @@ npm install react-redux
 ```bash
 npm install @reduxjs/toolkit react-redux
 ```
+
+
+SASS
+```bash
+npm install node-sass
+````
+

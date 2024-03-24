@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TodoFilters from "./components/TodoFilters";
 import TodoItems from "./components/TodoItems";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { onDelete, fetchTasks, addNewTask } from "./todoSlice";
+import { onDelete, fetchTasks, addNewTask, updateTask } from "./todoSlice";
 
 interface NewTask {
   title: string;
@@ -27,6 +27,13 @@ const TodoList: React.FC = () => {
   useEffect(() => {
     dispatch(fetchTasks());
   }, [dispatch]);
+
+  const handleUpdate = (id: number) => { 
+    const task = todoList.find((item) => item.id === id);
+    if (task) {
+      dispatch(updateTask({ ...task, title: "Updated" }));
+    }
+  }
 
   return (
     <div>
@@ -71,6 +78,7 @@ const TodoList: React.FC = () => {
           id={item.id}
           title={item.title}
           body={item.body}
+          onUpdate={(id) => handleUpdate(id)}
           onDelete={(id) => dispatch(onDelete(id))}
         />
       ))}
